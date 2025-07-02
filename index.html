@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+	<div id="loader">
+  <div class="loader-content">
+    <h1 class="loader-title">ELECTROMOS</h1>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+</div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromos - Electronics Club IIT Bhilai</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body class="dark-theme">
+		<video autoplay muted loop playsinline id="bg-video">
+		<source src="mybg.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+		</video>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1750267930/pplx_project_search_images/9d608722d60197337d0d9a248e38809d0591edf1.jpg" alt="IIT Logo" class="logo-img">
+                <span class="logo-text">ELECTROMOS</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#highlights" class="nav-link">Highlights</a>
+                <a href="#simulations" class="nav-link">Simulations</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#component-issue" class="nav-link">Components</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-controls">
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+    
+    
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-main">ELECTROMOS</span>
+                <span class="hero-sub">Electronics Club • IIT Bhilai</span>
+            </h1>
+            <p class="hero-description">
+                Innovating the future through cutting-edge electronics, robotics, and embedded systems
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('events')">Explore Events</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('projects')">View Projects</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Join us for exciting workshops, competitions, and tech talks</p>
+            
+            <div class="events-grid" id="events-grid">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="highlights-section">
+        <div class="container">
+            <h2 class="section-title">Event Highlights</h2>
+            <p class="section-subtitle">Celebrating our achievements and memorable moments</p>
+            
+            <div class="highlights-carousel" id="highlights-carousel">
+                <div class="highlights-container" id="highlights-container">
+                    <!-- Highlights will be populated by JavaScript -->
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" id="highlights-prev">&lt;</button>
+                    <div class="carousel-dots" id="highlights-dots"></div>
+                    <button class="carousel-btn next" id="highlights-next">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulations Section -->
+    <section id="simulations" class="simulations-section">
+        <div class="container">
+            <h2 class="section-title">Interactive Simulations</h2>
+            <p class="section-subtitle">Explore electronics concepts through hands-on simulations</p>
+            
+            <div class="simulations-grid">
+                <!-- Signal Processing Simulation -->
+                <div class="simulation-card active" id="signal-sim">
+                    <div class="sim-header" onclick="toggleSimulation('signal-sim')">
+                        <h3>Signal Processing Lab</h3>
+                        <span class="sim-toggle">−</span>
+                    </div>
+                    <div class="sim-content">
+                        <div class="sim-controls">
+                            <div class="control-group">
+                                <label>Frequency (Hz)</label>
+                                <input type="range" id="freq-slider" min="1" max="50" value="5" class="slider">
+                                <span id="freq-value">5</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Amplitude</label>
+                                <input type="range" id="amp-slider" min="0.1" max="2" step="0.1" value="1" class="slider">
+                                <span id="amp-value">1.0</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Filter Type</label>
+                                <select id="filter-select" class="form-control">
+                                    <option value="none">No Filter</option>
+                                    <option value="lowpass">Low Pass</option>
+                                    <option value="highpass">High Pass</option>
+                                </select>
+                            </div>
+                        </div>
+                        <canvas id="signal-canvas" width="600" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Logic Gate Simulator -->
+                <div class="simulation-card" id="logic-sim">
+                    <div class="sim-header" onclick="toggleSimulation('logic-sim')">
+                        <h3>Logic Gate Simulator</h3>
+                        <span class="sim-toggle">+</span>
+                    </div>
+                    <div class="sim-content">
+                        <div class="sim-controls">
+                            <div class="control-group">
+                                <label>Gate Type</label>
+                                <select id="gate-select" class="form-control">
+                                    <option value="AND">AND Gate</option>
+                                    <option value="OR">OR Gate</option>
+                                    <option value="NOT">NOT Gate</option>
+                                    <option value="XOR">XOR Gate</option>
+                                </select>
+                            </div>
+                            <div class="logic-inputs">
+                                <div class="input-group">
+                                    <label>Input A</label>
+                                    <button class="logic-toggle" id="input-a" data-state="0">0</button>
+                                </div>
+                                <div class="input-group">
+                                    <label>Input B</label>
+                                    <button class="logic-toggle" id="input-b" data-state="0">0</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="logic-output">
+                            <div class="output-display">
+                                <label>Output</label>
+                                <div class="output-led" id="logic-output">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RC Circuit Simulator -->
+                <div class="simulation-card" id="rc-sim">
+                    <div class="sim-header" onclick="toggleSimulation('rc-sim')">
+                        <h3>RC Circuit Analyzer</h3>
+                        <span class="sim-toggle">+</span>
+                    </div>
+                    <div class="sim-content">
+                        <div class="sim-controls">
+                            <div class="control-group">
+                                <label>Resistance (kΩ)</label>
+                                <input type="range" id="r-slider" min="1" max="100" value="10" class="slider">
+                                <span id="r-value">10</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Capacitance (μF)</label>
+                                <input type="range" id="c-slider" min="1" max="100" value="10" class="slider">
+                                <span id="c-value">10</span>
+                            </div>
+                            <div class="control-group">
+                                <button class="btn btn-primary" id="rc-start">Start Charging</button>
+                                <button class="btn btn-secondary" id="rc-reset">Reset</button>
+                            </div>
+                        </div>
+                        <canvas id="rc-canvas" width="600" height="300"></canvas>
+                        <div class="rc-info">
+                            <span>Time Constant (τ): <span id="time-constant">0.1</span>s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <p class="section-subtitle">Innovative solutions built by our talented members</p>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="IoT">IoT</button>
+                <button class="filter-btn" data-filter="Robotics">Robotics</button>
+                <button class="filter-btn" data-filter="Embedded Systems">Embedded</button>
+                <button class="filter-btn" data-filter="Power Electronics">Power</button>
+            </div>
+            
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Issue Section -->
+    <section id="component-issue" class="component-issue-section">
+        <div class="container">
+            <div class="component-card">
+                <h2 class="section-title">Component Request</h2>
+                <p class="section-subtitle">Need electronic components for your project? We've got you covered!</p>
+                
+                <div class="component-instructions">
+                    <div class="instruction-item">
+                        <span class="instruction-icon">📋</span>
+                        <p>Fill out the component request form with your project details</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-icon">⚡</span>
+                        <p>Specify the components you need and their quantities</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-icon">🚀</span>
+                        <p>We'll process your request and make components available</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary component-btn" onclick="openComponentForm()">
+                    Request Components
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Reach Out</h2>
+            <p class="section-subtitle">Get in touch with us for collaborations and inquiries</p>
+            
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <span class="form-error" id="name-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <span class="form-error" id="email-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            <span class="form-error" id="message-error"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full-width">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="coordinator-info">
+                        <img src="/api/placeholder/200/200" alt="Divit Sharma" class="coordinator-img">
+                        <h3>Divit Sharma</h3>
+                        <p class="coordinator-title">Coordinator, Electromos Club</p>
+                        <div class="contact-details">
+                            <p>📧 divit.sharma@iitbhilai.ac.in</p>
+                            <p>📱 +91 9876543210</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/divit-sharma" target="_blank" class="social-link">LinkedIn</a>
+                            <a href="https://github.com/divit-sharma" target="_blank" class="social-link">GitHub</a>
+                            <a href="https://instagram.com/divit.sharma" target="_blank" class="social-link">Instagram</a>
+                        </div>
+                    </div>
+                    
+                    <div class="club-contact">
+                        <h4>Club Information</h4>
+                        <p>📧 electromos@iitbhilai.ac.in</p>
+                        <p>🏫 IIT Bhilai, Raipur, Chhattisgarh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">ELECTROMOS</span>
+                    <p>Electronics Club • IIT Bhilai</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://linkedin.com/company/electromos-iitbhilai" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/electromos-iitbhilai" target="_blank">GitHub</a>
+                    <a href="https://instagram.com/electromos_iitbhilai" target="_blank">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Electromos Club, IIT Bhilai. All rights reserved.</p>
+                <p class="developer-credit">Developed by Divit Sharma</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for contacting us. We'll get back to you soon.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+
+</body>
+</html>
