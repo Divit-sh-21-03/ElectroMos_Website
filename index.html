@@ -28,8 +28,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="https://pplx-res.cloudinary.com/image/upload/v1750267930/pplx_project_search_images/9d608722d60197337d0d9a248e38809d0591edf1.jpg" alt="IIT Logo" class="logo-img">
-                <span class="logo-text">ELECTROMOS</span>
+                <img src="logo.png" alt="Club Logo" class="logo-img">
+				<span class="logo-text">ELECTROMOS</span>
             </div>
             
             <div class="nav-menu" id="nav-menu">
@@ -145,41 +145,49 @@
                 </div>
 
                 <!-- Logic Gate Simulator -->
-                <div class="simulation-card" id="logic-sim">
-                    <div class="sim-header" onclick="toggleSimulation('logic-sim')">
-                        <h3>Logic Gate Simulator</h3>
-                        <span class="sim-toggle">+</span>
-                    </div>
-                    <div class="sim-content">
-                        <div class="sim-controls">
-                            <div class="control-group">
-                                <label>Gate Type</label>
-                                <select id="gate-select" class="form-control">
-                                    <option value="AND">AND Gate</option>
-                                    <option value="OR">OR Gate</option>
-                                    <option value="NOT">NOT Gate</option>
-                                    <option value="XOR">XOR Gate</option>
-                                </select>
-                            </div>
-                            <div class="logic-inputs">
-                                <div class="input-group">
-                                    <label>Input A</label>
-                                    <button class="logic-toggle" id="input-a" data-state="0">0</button>
-                                </div>
-                                <div class="input-group">
-                                    <label>Input B</label>
-                                    <button class="logic-toggle" id="input-b" data-state="0">0</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="logic-output">
-                            <div class="output-display">
-                                <label>Output</label>
-                                <div class="output-led" id="logic-output">0</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="simulation-card" id="logic-sim">
+  <div class="sim-header" onclick="toggleSimulation('logic-sim')">
+    <h3>Logic Gate Simulator</h3>
+    <span class="sim-toggle">+</span>
+  </div>
+  <div class="sim-content">
+    <div class="sim-controls">
+      <div class="control-group">
+        <label>Gate Type</label>
+        <select id="gate-select" class="form-control">
+          <option value="AND">AND Gate</option>
+          <option value="OR">OR Gate</option>
+          <option value="NOT">NOT Gate</option>
+          <option value="XOR">XOR Gate</option>
+          <option value="NAND">NAND Gate</option>
+          <option value="NOR">NOR Gate</option>
+          <option value="XNOR">XNOR Gate</option>
+        </select>
+      </div>
+      <div class="logic-inputs">
+        <div class="input-group">
+          <label>Input A</label>
+          <button class="logic-toggle" id="input-a" data-state="0">0</button>
+        </div>
+        <div class="input-group" id="group-b">
+          <label>Input B</label>
+          <button class="logic-toggle" id="input-b" data-state="0">0</button>
+        </div>
+      </div>
+    </div>
+    <div class="logic-output">
+      <div class="output-display">
+        <label>Output</label>
+        <div class="output-led" id="logic-output">0</div>
+      </div>
+    </div>
+    <!-- New: truth table -->
+    <table id="truth-table" class="truth-table">
+      <thead><tr><th>A</th><th>B</th><th>Out</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
                 <!-- RC Circuit Simulator -->
                 <div class="simulation-card" id="rc-sim">
@@ -220,13 +228,7 @@
             <h2 class="section-title">Our Projects</h2>
             <p class="section-subtitle">Innovative solutions built by our talented members</p>
             
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="IoT">IoT</button>
-                <button class="filter-btn" data-filter="Robotics">Robotics</button>
-                <button class="filter-btn" data-filter="Embedded Systems">Embedded</button>
-                <button class="filter-btn" data-filter="Power Electronics">Power</button>
-            </div>
+            
             
             <div class="projects-grid" id="projects-grid">
                 <!-- Projects will be populated by JavaScript -->

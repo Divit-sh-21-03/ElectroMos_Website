@@ -228,17 +228,6 @@ function setupEventListeners() {
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', handleContactForm);
 
-    // Project filters
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const filter = e.target.dataset.filter;
-            filterProjects(filter);
-            
-            // Update active filter
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-        });
-    });
 
     // Modal close
     const modal = document.getElementById('success-modal');
@@ -332,9 +321,7 @@ function renderProjects(filter = 'all') {
     });
 }
 
-function filterProjects(filter) {
-    renderProjects(filter);
-}
+
 
 // Render Highlights
 function renderHighlights() {
@@ -415,168 +402,195 @@ function setupSimulations() {
     setupRCCircuit();
 }
 
-// Signal Processing Simulation
 function setupSignalProcessing() {
-    const canvas = document.getElementById('signal-canvas');
-    const ctx = canvas.getContext('2d');
-    const freqSlider = document.getElementById('freq-slider');
-    const ampSlider = document.getElementById('amp-slider');
-    const filterSelect = document.getElementById('filter-select');
-    const freqValue = document.getElementById('freq-value');
-    const ampValue = document.getElementById('amp-value');
-    
-    let time = 0;
-    
+    const canvas      = document.getElementById('signal-canvas');
+    const ctx         = canvas.getContext('2d');
+    const freqSlider  = document.getElementById('freq-slider');
+    const ampSlider   = document.getElementById('amp-slider');
+    const filterSelect= document.getElementById('filter-select');
+    const freqValue   = document.getElementById('freq-value');
+    const ampValue    = document.getElementById('amp-value');
+
+    // real-time variables
+    let time = 0;                      // seconds
+    const dt = 0.001;                  // 1 ms sampling interval
+    const RC = 0.01;                   // 10 ms
+    const cutoff = 1 / (2 * Math.PI * RC);
+
+    // α coefficients for discrete RC filters
+    const α_lp = dt / (RC + dt);
+    const α_hp = RC / (RC + dt);
+
+    // filter states
+    let y_lp = 0, y_hp = 0, x_prev = 0;
+
     function drawSignal() {
-        const frequency = parseFloat(freqSlider.value);
-        const amplitude = parseFloat(ampSlider.value);
+        const f = parseFloat(freqSlider.value);     // in Hz
+        const A = parseFloat(ampSlider.value);      // in V
         const filter = filterSelect.value;
-        
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw grid
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.lineWidth = 1;
-        for (let i = 0; i < canvas.width; i += 50) {
-            ctx.beginPath();
-            ctx.moveTo(i, 0);
-            ctx.lineTo(i, canvas.height);
-            ctx.stroke();
-        }
-        for (let i = 0; i < canvas.height; i += 50) {
-            ctx.beginPath();
-            ctx.moveTo(0, i);
-            ctx.lineTo(canvas.width, i);
-            ctx.stroke();
-        }
-        
-        // Draw original signal
-        ctx.strokeStyle = '#1FB8CD';
-        ctx.lineWidth = 2;
+
+        // draw grid & axes (omitted for brevity—keep your existing code) …
+
+        const N = canvas.width - 40; // data points
         ctx.beginPath();
-        
-        for (let x = 0; x < canvas.width; x++) {
-            const t = (x / canvas.width) * 4 * Math.PI + time;
-            let y = amplitude * Math.sin(frequency * t);
-            
-            // Apply filter
-            if (filter === 'lowpass') {
-                y = y * 0.7 + 0.3 * amplitude * Math.sin((frequency * 0.5) * t);
-            } else if (filter === 'highpass') {
-                y = y - 0.5 * amplitude * Math.sin((frequency * 0.3) * t);
-            }
-            
-            y = canvas.height / 2 - y * (canvas.height / 4);
-            
-            if (x === 0) {
-                ctx.moveTo(x, y);
-            } else {
-                ctx.lineTo(x, y);
-            }
+        ctx.strokeStyle = '#1FB8CD'; ctx.lineWidth = 2;
+
+        // original signal
+        for (let i = 0; i < N; i++) {
+            const t_sample = time + i * dt;
+            const x = A * Math.sin(2 * Math.PI * f * t_sample);
+            const y = canvas.height/2 - x * (canvas.height/4);
+            ctx[i === 0 ? 'moveTo' : 'lineTo'](40 + i, y);
         }
-        
         ctx.stroke();
-        
-        // Draw filtered signal if filter is applied
+
+        // filtered signal
         if (filter !== 'none') {
-            ctx.strokeStyle = '#FFC185';
-            ctx.lineWidth = 2;
+            // reset local filter state per-frame for visualization consistency
+            let lp = 0, hp = 0, prev = 0;
             ctx.beginPath();
-            
-            for (let x = 0; x < canvas.width; x++) {
-                const t = (x / canvas.width) * 4 * Math.PI + time;
-                let y = amplitude * Math.sin(frequency * t);
+            ctx.strokeStyle = '#FFC185'; ctx.lineWidth = 3;
+
+            for (let i = 0; i < N; i++) {
+                const t_sample = time + i * dt;
+                const x = A * Math.sin(2 * Math.PI * f * t_sample);
                 
                 if (filter === 'lowpass') {
-                    y = 0.3 * amplitude * Math.sin((frequency * 0.5) * t);
-                } else if (filter === 'highpass') {
-                    y = amplitude * Math.sin(frequency * t) * 0.8;
-                }
-                
-                y = canvas.height / 2 - y * (canvas.height / 4);
-                
-                if (x === 0) {
-                    ctx.moveTo(x, y);
+                    lp = lp + α_lp * (x - lp);
+                    var out = lp;
                 } else {
-                    ctx.lineTo(x, y);
+                    // high-pass: y[n] = α ( y[n-1] + x[n] - x[n-1] )
+                    hp = α_hp * (hp + x - prev);
+                    prev = x;
+                    var out = hp;
                 }
+
+                const y = canvas.height/2 - out * (canvas.height/4);
+                ctx[i === 0 ? 'moveTo' : 'lineTo'](40 + i, y);
             }
-            
             ctx.stroke();
         }
-        
-        time += 0.05;
+
+        // === LEGEND & INFO DISPLAY ===
+
+// 💠 Original Signal label
+ctx.font = 'bold 15px "Verdana", sans-serif';
+ctx.fillStyle = '#1FB8CD';
+ctx.fillText('Original Signal', canvas.width - 150, 25);
+
+// 🔶 Filtered Signal label
+if (filter !== 'none') {
+    ctx.font = 'bold 15px "Verdana", sans-serif';
+    ctx.fillStyle = '#FFC185';
+    ctx.fillText('Filtered Signal', canvas.width - 150, 45);
+
+    // ⚙️ Technical filter info (lighter font)
+    ctx.font = '11px "Verdana", sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.fillText(
+      `${filter === 'lowpass' ? 'Low-pass' : 'High-pass'} RC=${RC}s`, 
+      canvas.width - 150, 70
+    );
+    ctx.fillText(`Cutoff = ${cutoff.toFixed(1)} Hz`, canvas.width - 150, 85);
+}
+
+// 📊 Real-time input info (bottom left)
+ctx.font = '11px "Verdana", sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.9)';
+ctx.fillText(`Input: ${f}Hz, ${A.toFixed(1)}V`, 10, canvas.height - 40);
+ctx.fillText(`Time: ${time.toFixed(3)}s`, 10, canvas.height - 25);
+
+        // advance global time
+        time += dt;
+
+        // loop
         signalAnimationId = requestAnimationFrame(drawSignal);
     }
-    
-    // Event listeners
-    freqSlider.addEventListener('input', () => {
-        freqValue.textContent = freqSlider.value;
-    });
-    
-    ampSlider.addEventListener('input', () => {
-        ampValue.textContent = parseFloat(ampSlider.value).toFixed(1);
-    });
-    
-    // Start animation
+
+    // update display values
+    freqSlider.addEventListener('input', () => { freqValue.textContent = freqSlider.value; });
+    ampSlider .addEventListener('input', () => { ampValue.textContent = parseFloat(ampSlider.value).toFixed(1); });
+    filterSelect.addEventListener('change', () => { y_lp = y_hp = x_prev = 0; });
+
     drawSignal();
 }
 
-// Logic Gates Simulation
 function setupLogicGates() {
-    const gateSelect = document.getElementById('gate-select');
-    const inputA = document.getElementById('input-a');
-    const inputB = document.getElementById('input-b');
-    const logicOutput = document.getElementById('logic-output');
+    const gateSelect    = document.getElementById('gate-select');
+    const inputA        = document.getElementById('input-a');
+    const inputB        = document.getElementById('input-b');
+    const groupB        = document.getElementById('group-b');
+    const logicOutput   = document.getElementById('logic-output');
+    const truthTable    = document.querySelector('#truth-table tbody');
+    
+    function computeGate(gate, a, b) {
+        switch (gate) {
+            case 'AND':  return a & b;
+            case 'OR':   return a | b;
+            case 'NOT':  return a ^ 1;
+            case 'XOR':  return a ^ b;
+            case 'NAND': return (a & b) ^ 1;
+            case 'NOR':  return (a | b) ^ 1;
+            case 'XNOR': return (a ^ b) ^ 1;
+            default:     return 0;
+        }
+    }
     
     function updateLogicOutput() {
         const gate = gateSelect.value;
-        const a = parseInt(inputA.dataset.state);
-        const b = parseInt(inputB.dataset.state);
-        let output = 0;
+        const a    = +inputA.dataset.state;
+        const b    = +inputB.dataset.state;
         
-        switch (gate) {
-            case 'AND':
-                output = a && b ? 1 : 0;
-                break;
-            case 'OR':
-                output = a || b ? 1 : 0;
-                break;
-            case 'NOT':
-                output = a ? 0 : 1;
-                break;
-            case 'XOR':
-                output = a !== b ? 1 : 0;
-                break;
-        }
+        // Hide B for NOT gate
+        groupB.style.display = (gate === 'NOT') ? 'none' : 'flex';
         
-        logicOutput.textContent = output;
-        logicOutput.classList.toggle('active', output === 1);
+        // compute and display
+        const out = computeGate(gate, a, b);
+        logicOutput.textContent = out;
+        logicOutput.classList.toggle('active', out === 1);
         
-        // Hide input B for NOT gate
-        inputB.parentElement.style.display = gate === 'NOT' ? 'none' : 'flex';
+        // regenerate truth table
+        renderTruthTable(gate);
     }
     
-    inputA.addEventListener('click', () => {
-        const currentState = parseInt(inputA.dataset.state);
-        const newState = currentState ? 0 : 1;
-        inputA.dataset.state = newState;
-        inputA.textContent = newState;
-        inputA.classList.toggle('active', newState === 1);
-        updateLogicOutput();
-    });
+    function renderTruthTable(gate) {
+        truthTable.innerHTML = '';
+        const rows = (gate === 'NOT')
+            ? [[0,0],[1,0]]      // for NOT: B unused, show A→Out
+            : [[0,0],[0,1],[1,0],[1,1]];
+        
+        rows.forEach(([a,b]) => {
+            const out = computeGate(gate, a, b);
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${a}</td>
+              <td>${gate==='NOT'?'–':b}</td>
+              <td>${out}</td>
+            `;
+            truthTable.appendChild(tr);
+        });
+    }
     
-    inputB.addEventListener('click', () => {
-        const currentState = parseInt(inputB.dataset.state);
-        const newState = currentState ? 0 : 1;
-        inputB.dataset.state = newState;
-        inputB.textContent = newState;
-        inputB.classList.toggle('active', newState === 1);
-        updateLogicOutput();
-    });
+    // toggle handlers
+    function makeToggle(btn) {
+        btn.addEventListener('click', () => {
+            const cur = +btn.dataset.state;
+            const nxt = cur ^ 1;
+            btn.dataset.state = nxt;
+            btn.textContent    = nxt;
+            btn.classList.toggle('active', nxt === 1);
+            updateLogicOutput();
+        });
+    }
     
+    // init
+    makeToggle(inputA);
+    makeToggle(inputB);
     gateSelect.addEventListener('change', updateLogicOutput);
     
+    // first render
     updateLogicOutput();
 }
 
@@ -657,7 +671,7 @@ function setupRCCircuit() {
         
         // Draw current voltage level
         ctx.fillStyle = '#1FB8CD';
-        ctx.font = '16px Inter';
+        ctx.font = '16px Helvetica';
         ctx.fillText(`Voltage: ${voltage.toFixed(2)}V`, canvas.width - 150, 30);
         
         if (isCharging) {

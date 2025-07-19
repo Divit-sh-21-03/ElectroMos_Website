@@ -681,7 +681,7 @@ body {
 .logo-img {
     width: 32px;
     height: 32px;
-    filter: brightness(0) invert(1);
+    /*filter: brightness(0) invert(1);*/
 }
 
 .logo-text {
@@ -1980,4 +1980,45 @@ section {
 .tech-tag {
   background: rgba(31, 184, 205, 0.3) !important;
   color: #fff !important;
+}
+/* Force black background for all simulation dropdown menus */
+#simulations .form-control,
+#simulations select.form-control,
+#filter-select,
+#gate-select {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+#simulations .form-control option,
+#simulations select.form-control option {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #fff !important;
+}
+
+/* Dark theme compatibility */
+@media (prefers-color-scheme: dark), [data-color-scheme="dark"] {
+    #simulations .form-control,
+    #simulations select.form-control,
+    #filter-select,
+    #gate-select {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+        color: #fff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+}
+.truth-table {
+  width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+}
+.truth-table th,
+.truth-table td {
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 4px 8px;
+  text-align: center;
+}
+.truth-table thead th {
+  background: rgba(255,255,255,0.1);
 }
