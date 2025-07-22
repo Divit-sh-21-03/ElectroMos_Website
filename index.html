@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="dark">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
 	<div id="loader">
   <div class="loader-content">
     <h1 class="loader-title">ELECTROMOS</h1>
@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electromos - Electronics Club IIT Bhilai</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+   
+
 </head>
 <body class="dark-theme">
 		<video autoplay muted loop playsinline id="bg-video">
@@ -28,7 +28,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.png" alt="Club Logo" class="logo-img">
+                <img src="images/logo.png" alt="Club Logo" class="logo-img">
 				<span class="logo-text">ELECTROMOS</span>
             </div>
             
@@ -236,91 +236,79 @@
         </div>
     </section>
 
-    <!-- Component Issue Section -->
-    <section id="component-issue" class="component-issue-section">
-        <div class="container">
-            <div class="component-card">
-                <h2 class="section-title">Component Request</h2>
-                <p class="section-subtitle">Need electronic components for your project? We've got you covered!</p>
-                
-                <div class="component-instructions">
-                    <div class="instruction-item">
-                        <span class="instruction-icon">📋</span>
-                        <p>Fill out the component request form with your project details</p>
-                    </div>
-                    <div class="instruction-item">
-                        <span class="instruction-icon">⚡</span>
-                        <p>Specify the components you need and their quantities</p>
-                    </div>
-                    <div class="instruction-item">
-                        <span class="instruction-icon">🚀</span>
-                        <p>We'll process your request and make components available</p>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary component-btn" onclick="openComponentForm()">
-                    Request Components
-                </button>
-            </div>
-        </div>
-    </section>
+<!-- Component Issue Section -->
+<section id="component-issue" class="component-issue-section">
+  <div class="container">
+    <div class="component-card">
+      <h2 class="section-title">Component Request</h2>
+      <p class="section-subtitle">
+        Need electronic components for your project? We’ve got you covered!
+      </p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Reach Out</h2>
-            <p class="section-subtitle">Get in touch with us for collaborations and inquiries</p>
-            
-            <div class="contact-grid">
-                <div class="contact-form-container">
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                            <span class="form-error" id="name-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                            <span class="form-error" id="email-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                            <span class="form-error" id="message-error"></span>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full-width">Send Message</button>
-                    </form>
-                </div>
-                
-                <div class="contact-info">
-                    <div class="coordinator-info">
-                        <img src="/api/placeholder/200/200" alt="Divit Sharma" class="coordinator-img">
-                        <h3>Divit Sharma</h3>
-                        <p class="coordinator-title">Coordinator, Electromos Club</p>
-                        <div class="contact-details">
-                            <p>📧 divit.sharma@iitbhilai.ac.in</p>
-                            <p>📱 +91 9876543210</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://linkedin.com/in/divit-sharma" target="_blank" class="social-link">LinkedIn</a>
-                            <a href="https://github.com/divit-sharma" target="_blank" class="social-link">GitHub</a>
-                            <a href="https://instagram.com/divit.sharma" target="_blank" class="social-link">Instagram</a>
-                        </div>
-                    </div>
-                    
-                    <div class="club-contact">
-                        <h4>Club Information</h4>
-                        <p>📧 electromos@iitbhilai.ac.in</p>
-                        <p>🏫 IIT Bhilai, Raipur, Chhattisgarh</p>
-                    </div>
-                </div>
-            </div>
+      <!-- three numbered steps -->
+      <div class="component-instructions">
+        <div class="instruction-item">
+          <span class="instruction-number">1</span>
+          <h4 class="instruction-title">Tell us about your project</h4>
+          <p class="instruction-text">
+            Submit a few details—what you’re building and why.
+          </p>
         </div>
-    </section>
+        <div class="instruction-item">
+          <span class="instruction-number">2</span>
+          <h4 class="instruction-title">Select your components</h4>
+          <p class="instruction-text">
+            Pick the parts you need and how many of each.
+          </p>
+        </div>
+        <div class="instruction-item">
+          <span class="instruction-number">3</span>
+          <h4 class="instruction-title">We’ll handle the rest</h4>
+          <p class="instruction-text">
+            We’ll try to arrange your components and notify you accordingly.
+          </p>
+        </div>
+      </div>
+
+      <button class="btn btn-primary component-btn" onclick="openComponentForm()">
+        Request Components
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">Reach Out</h2>
+    <p class="section-subtitle">Get in touch with us for collaborations and inquiries</p>
+
+    <div class="contact-grid">
+      <!-- Coordinator Info -->
+      <div class="contact-box coordinator-info">
+        <img src="images/Divit.png" alt="Divit Sharma" class="coordinator-img">
+        <h3>Divit Sharma</h3>
+        <p class="coordinator-title">Coordinator, Electromos Club</p>
+        <p>📧 divits@iitbhilai.ac.in</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/divit-sharma-949811283" target="_blank" class="social-link">LinkedIn</a>
+          <a href="https://www.instagram.com/_divit_21/" target="_blank" class="social-link">Instagram</a>
+        </div>
+      </div>
+
+      <!-- Club Info -->
+      <div class="contact-box club-contact">
+        <h4>Club Information</h4>
+        <p>📧 electromos@iitbhilai.ac.in</p>
+        <p>🏫 IIT Bhilai, Durg, Chhattisgarh</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=electromos@iitbhilai.ac.in" target="_blank" class="connect-button">Connect</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -331,9 +319,8 @@
                     <p>Electronics Club • IIT Bhilai</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://linkedin.com/company/electromos-iitbhilai" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/electromos-iitbhilai" target="_blank">GitHub</a>
-                    <a href="https://instagram.com/electromos_iitbhilai" target="_blank">Instagram</a>
+                    <a href="https://www.linkedin.com/company/electromos-sci-tech-club-iit-bhilai" target="_blank">LinkedIn</a>
+                    <a href="https://www.instagram.com/electromos.iitbh/?hl=en" target="_blank">Instagram</a>
                 </div>
             </div>
             <div class="footer-bottom">
