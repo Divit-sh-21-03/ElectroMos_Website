@@ -1,132 +1,126 @@
 // Application Data
 const eventsData = [
     {
-        id: 1,
-        title: "Circuit Design Workshop",
-        date: "2025-07-25",
-        description: "Hands-on PCB design and analysis session with industry experts",
-        image: "/api/placeholder/300/200",
-        category: "workshop"
-    },
-    {
-        id: 2,
-        title: "Robotics Competition",
-        date: "2025-08-10", 
-        description: "Autonomous robot programming challenge with exciting prizes",
-        image: "/api/placeholder/300/200",
-        category: "competition"
-    },
-    {
-        id: 3,
-        title: "Tech Talk: AI in Electronics",
-        date: "2025-08-15",
-        description: "Industry expert presentation on AI applications in modern electronics",
-        image: "/api/placeholder/300/200",
-        category: "seminar"
-    },
-    {
-        id: 4,
-        title: "Hackathon 2025",
+        id: 5,
+        title: "Intra IIT - IOT PS",
         date: "2025-09-05",
         description: "48-hour innovation challenge to solve real-world problems",
         image: "/api/placeholder/300/200",
         category: "hackathon"
     }
 ];
-
 const projectsData = [
+  {
+    id: 6,
+    title: "Home Security System with Weapon Detection",
+    domain: "Computer Vision",
+    description: "A Raspberry Pi 5-based system using YOLOv5 for real-time weapon detection with Gmail alerts and UPS backup for security applications.",
+    image: "images/divit.png",
+    name: "Divit Sharma",
+    position: "Coordinator",
+    techStack: ["Python", "YOLOv5", "OpenCV", "Raspberry Pi"],
+    github: "",
+    demo: ""
+  },
+  {
+    id: 1,
+    title: "AlgoSynthAI",
+    domain: "Explainable AI",
+    description: "Generates AI-driven videos that explain code logic step-by-step using Node.js, Tailwind CSS, and server-side rendering for learning platforms.",
+    image: "images/AyanKundu.jpg",
+    name: "Ayan Kundu",
+    position: "Core Member",
+    techStack: ["HTML", "Tailwind CSS", "Node.js", "Express.js"],
+    github: "",
+    demo: ""
+  },
+  {
+    id: 4,
+    title: "Smart Irrigation System",
+    domain: "IoT",
+    description: "Automated irrigation system using Arduino and moisture sensors to trigger a water pump and reduce manual intervention in farming.",
+    image: "images/AnandM.jpg",
+    name: "Sachidanand",
+    position: "Core Member",
+    techStack: ["Arduino", "Relay Module", "Soil Moisture Sensor"],
+    github: "",
+    demo: ""
+  },
     {
-        id: 1,
-        title: "Smart Home Automation",
-        domain: "IoT",
-        description: "Voice-controlled home system using ESP32 with mobile app integration",
-        image: "/api/placeholder/400/250",
-        techStack: ["ESP32", "React Native", "Firebase", "Alexa SDK"],
-        github: "https://github.com/electromos/smart-home",
-        demo: "https://demo.electromos.com/smart-home"
-    },
-    {
-        id: 2,
-        title: "Line Following Robot",
-        domain: "Robotics",
-        description: "Autonomous robot with computer vision and PID control",
-        image: "/api/placeholder/400/250",
-        techStack: ["Arduino", "OpenCV", "C++", "Sensors"],
-        github: "https://github.com/electromos/line-robot",
-        demo: "https://demo.electromos.com/line-robot"
-    },
-    {
-        id: 3,
-        title: "Digital Signal Processor",
-        domain: "Embedded Systems",
-        description: "Custom DSP implementation for real-time audio processing",
-        image: "/api/placeholder/400/250",
-        techStack: ["STM32", "C", "MATLAB", "Signal Processing"],
-        github: "https://github.com/electromos/dsp-audio",
-        demo: "https://demo.electromos.com/dsp-audio"
-    },
-    {
-        id: 4,
-        title: "Weather Monitoring System",
-        domain: "IoT",
-        description: "Cloud-based environmental monitoring with data visualization",
-        image: "/api/placeholder/400/250",
-        techStack: ["Raspberry Pi", "Python", "AWS", "React"],
-        github: "https://github.com/electromos/weather-monitor",
-        demo: "https://demo.electromos.com/weather-monitor"
-    },
-    {
-        id: 5,
-        title: "Gesture Controlled Drone",
-        domain: "Robotics",
-        description: "Hand gesture recognition system for drone control",
-        image: "/api/placeholder/400/250",
-        techStack: ["Arduino", "Computer Vision", "Machine Learning", "Drone API"],
-        github: "https://github.com/electromos/gesture-drone",
-        demo: "https://demo.electromos.com/gesture-drone"
-    },
-    {
-        id: 6,
-        title: "Solar Panel Optimizer",
-        domain: "Power Electronics",
-        description: "MPPT controller for maximum power point tracking",
-        image: "/api/placeholder/400/250",
-        techStack: ["Microcontroller", "Power Electronics", "Algorithms", "Monitoring"],
-        github: "https://github.com/electromos/solar-mppt",
-        demo: "https://demo.electromos.com/solar-mppt"
-    }
+    id: 2,
+    title: "Lunar Digital Elevation Model",
+    domain: "Robotics",
+    description: "Used satellite imagery with QGIS and photogrammetry to generate high-resolution lunar DEMs and 3D models using scientific Python tools.",
+    image: "images/AyanKundu.jpg",
+    name: "Ayan Kundu",
+    position: "Core Member",
+    techStack: ["OpenCV", "NumPy", "SciPy", "Matlab", "QGIS"],
+    github: "",
+    demo: ""
+  },
+  {
+    id: 5,
+    title: "Offline LLM-Powered Agricultural Assistant on Raspberry Pi",
+    domain: "AgriTech",
+    description: "An offline AI assistant on Raspberry Pi offering localized farming advice using RAG, LLMs, and support for regional languages.",
+    image: "/api/placeholder/400/250",
+    name: "Rohan Kumar Mishra",
+    position: "Former Core Member",
+    techStack: ["Raspberry Pi", "LLM", "RAG"],
+    github: "https://github.com/electromos/gesture-drone",
+    demo: "https://demo.electromos.com/gesture-drone"
+  },
+  {
+    id: 3,
+    title: "4-bit ALU from Logic Gates",
+    domain: "VLSI",
+    description: "Designed and implemented a 4-bit ALU on a breadboard using logic gates and control logic to perform basic arithmetic operations.",
+    image: "images/Kushal.jpg",
+    name: "Kushal",
+    position: "Member",
+    techStack: ["Computer Architecture"],
+    github: "",
+    demo: ""
+  }
 ];
+
 
 const highlightsData = [
     {
-        id: 1,
-        title: "Arduino Workshop Success",
-        description: "50+ students learned embedded programming fundamentals",
-        image: "/api/placeholder/350/200"
+        id: 6,
+        title: "Workshop on Bluetooth, WiFi and RF Module. ",
+        description: "Students learned modules like Bluetooth, WiFi and RF",
+        image: "images/moduleWshop.png"
     },
     {
-        id: 2,
-        title: "Inter-IIT Competition",
-        description: "Won 2nd place in robotics category at national level",
-        image: "/api/placeholder/350/200"
+        id: 7,
+        title: "ELECTROLITE Event",
+        description: "An Arduino based online game designing and simulating event",
+        image:"images/electrolite.png"
     },
     {
-        id: 3,
-        title: "Industry Partnership",
-        description: "Collaboration with leading tech companies for internships",
-        image: "/api/placeholder/350/200"
+        id: 8,
+        title: "Circuit Disrupt",
+        description: "Event in collaboration with Meraz 2022.",
+        image: "images/circuitDisrupt.png"
     },
     {
-        id: 4,
-        title: "Innovation Lab Setup",
-        description: "New lab with cutting-edge equipment for advanced projects",
-        image: "/api/placeholder/350/200"
+        id: 9,
+        title: "Summer of Electronics 1.0",
+        description: "Summer filled with hands-on, future-focused learning adventures.",
+        image: "images/soe1.0.png"
     },
     {
-        id: 5,
-        title: "Guest Lecture Series",
-        description: "Renowned experts shared insights on emerging technologies",
-        image: "/api/placeholder/350/200"
+        id: 10,
+        title: "F.I.N.D",
+        description: "Frequency Identification & Noise Diminution event in collaboration with Meraz 2024.",
+        image: "images/find.png"
+    },
+    {
+        id: 11,
+        title: "Summer of Electronics 2.0",
+        description: "Summer sparked with circuits, creativity, and career-boosting skills!",
+        image: "images/soe2.0.png"
     }
 ];
 
@@ -141,24 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 	document.addEventListener('DOMContentLoaded', function() {
   initializeApp();
-	    // VANTA.NET background
-   /* VANTA.NET({
-        el: "#vanta-bg",
-        backgroundAlpha: 1,
-        backgroundColor: 0x232a3c,   // dark navy (decimal or hex)
-        color: 0xff5e8a,             // line/dot color (decimal or hex)
-        points: 10,
-        spacing: 15,
-        maxDistance: 20,
-        minHeight: 200,
-        minWidth: 200,
-        mouseControls: true,
-        touchControls: false,
-        gyroControls: false,
-        scale: 1,
-        scaleMobile: 1,
-        showDots: true
-    });*/
+
  
 });
 // ─── Loader Progress Logic ─────────────────────────────────────────
@@ -202,6 +179,21 @@ function initializeApp() {
     setupScrollAnimations();
     setupCarousel();
 }
+function handleContactForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill out all fields.");
+    return;
+  }
+
+  alert("Thanks for your message! We'll get back to you soon.");
+  document.getElementById("contact-form").reset();
+}
 
 // Event Listeners Setup
 function setupEventListeners() {
@@ -224,9 +216,7 @@ function setupEventListeners() {
         });
     });
 
-    // Contact form
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', handleContactForm);
+
 
 
     // Modal close
@@ -302,20 +292,25 @@ function renderProjects(filter = 'all') {
         const techStackHTML = project.techStack.map(tech => 
             `<span class="tech-tag">${tech}</span>`
         ).join('');
-        
-        projectCard.innerHTML = `
-            <img src="${project.image}" alt="${project.title}" class="project-image">
-            <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
-                <span class="project-domain">${project.domain}</span>
-                <p class="project-description">${project.description}</p>
-                <div class="tech-stack">${techStackHTML}</div>
-                <div class="project-links">
-                    <a href="${project.github}" target="_blank" class="project-link">GitHub</a>
-                    <a href="${project.demo}" target="_blank" class="project-link">Live Demo</a>
-                </div>
-            </div>
-        `;
+
+projectCard.innerHTML = `
+  <div class="project-header">
+    <img src="${project.image}" alt="${project.title}" class="project-image-circle">
+    <div class="project-person">
+      <h4 class="person-name">${project.name}</h4>
+      <p class="person-position">${project.position}</p>
+    </div>
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">${project.title}</h3>
+    <span class="project-domain">${project.domain}</span>
+    <p class="project-description">${project.description}</p>
+    <div class="tech-stack">${techStackHTML}</div>
+  </div>
+`;
+
+
+
         
         projectsGrid.appendChild(projectCard);
     });
@@ -749,56 +744,6 @@ function toggleSimulation(simId) {
     toggle.textContent = simCard.classList.contains('active') ? '−' : '+';
 }
 
-// Contact Form Handling
-function handleContactForm(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
-    const message = formData.get('message').trim();
-    
-    // Clear previous errors
-    document.querySelectorAll('.form-error').forEach(error => {
-        error.classList.remove('active');
-        error.textContent = '';
-    });
-    
-    let isValid = true;
-    
-    // Validate name
-    if (!name) {
-        showError('name-error', 'Name is required');
-        isValid = false;
-    }
-    
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
-        showError('email-error', 'Email is required');
-        isValid = false;
-    } else if (!emailRegex.test(email)) {
-        showError('email-error', 'Please enter a valid email');
-        isValid = false;
-    }
-    
-    // Validate message
-    if (!message) {
-        showError('message-error', 'Message is required');
-        isValid = false;
-    } else if (message.length < 10) {
-        showError('message-error', 'Message must be at least 10 characters');
-        isValid = false;
-    }
-    
-    if (isValid) {
-        // Simulate form submission
-        setTimeout(() => {
-            document.getElementById('success-modal').classList.add('active');
-            e.target.reset();
-        }, 500);
-    }
-}
 
 function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
