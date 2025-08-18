@@ -753,7 +753,7 @@ function showError(elementId, message) {
 
 // Component Issue Form
 function openComponentForm() {
-    window.open('https://forms.google.com/placeholder-component-request', '_blank');
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSczt2BuOAABzEnnt8jbn1vNa5BaRxppdqPSVR9NkED7K7MfGQ/viewform?usp=dialog', '_blank');
 }
 
 // Scroll Animations
