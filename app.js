@@ -11,7 +11,7 @@ const eventsData = [
     {
         id: 6,
         title: "VLSI Workshop: From Digital Electronics to GDS Flow",
-        date: "2025-10-12",  
+        date: "2025-10-11",  
         description: "A 2-day hands-on workshop covering fundamentals of digital electronics all the way to the VLSI GDS flow, with alumni interaction sessions.",
         image: "images/vlsiWorkshop.png", 
         category: "workshop"
