@@ -38,7 +38,7 @@ const projectsData = [
     description: "Generates AI-driven videos that explain code logic step-by-step using Node.js, Tailwind CSS, and server-side rendering for learning platforms.",
     image: "images/AyanKundu.jpg",
     name: "Ayan Kundu",
-    position: "Core Member",
+    position: "Former Core Member",
     techStack: ["HTML", "Tailwind CSS", "Node.js", "Express.js"],
     github: "",
     demo: ""
@@ -62,7 +62,7 @@ const projectsData = [
     description: "Used satellite imagery with QGIS and photogrammetry to generate high-resolution lunar DEMs and 3D models using scientific Python tools.",
     image: "images/AyanKundu.jpg",
     name: "Ayan Kundu",
-    position: "Core Member",
+    position: "Former Core Member",
     techStack: ["OpenCV", "NumPy", "SciPy", "Matlab", "QGIS"],
     github: "",
     demo: ""
