@@ -2,13 +2,22 @@
 const eventsData = [
     {
         id: 5,
-        title: "Intra IIT - IOT PS",
-        date: "2025-09-05",
-        description: "48-hour innovation challenge to solve real-world problems",
-        image: "/api/placeholder/300/200",
+        title: "Intra IIT – IoT Practice Challenge",
+        date: "2025-08-21",  
+        description: "A practice challenge for the upcoming Inter-IIT Tech Meet, focusing on IoT problem statements.",
+        image: "images/Intraiit.png", 
         category: "hackathon"
+    },
+    {
+        id: 6,
+        title: "VLSI Workshop: From Digital Electronics to GDS Flow",
+        date: "2025-10-12",  
+        description: "A 2-day hands-on workshop covering fundamentals of digital electronics all the way to the VLSI GDS flow, with alumni interaction sessions.",
+        image: "images/vlsiWorkshop.png", 
+        category: "workshop"
     }
 ];
+
 const projectsData = [
   {
     id: 6,
