@@ -72,7 +72,7 @@ const projectsData = [
     title: "Offline LLM-Powered Agricultural Assistant on Raspberry Pi",
     domain: "AgriTech",
     description: "An offline AI assistant on Raspberry Pi offering localized farming advice using RAG, LLMs, and support for regional languages.",
-    image: "images/logo.jpg",
+    image: "images/logo.png",
     name: "Rohan Kumar Mishra",
     position: "Former Core Member",
     techStack: ["Raspberry Pi", "LLM", "RAG"],
