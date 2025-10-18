@@ -6,10 +6,10 @@
 }
 
 #author-date{
-font-family: 'Montserrat';
-text-align: right;
-font-size: clamp(0.8rem, 1vw, 2rem);
-padding-right: 2rem;
+    font-family: 'Montserrat';
+    text-align: right;
+    font-size: clamp(0.8rem, 1vw, 2rem);
+    padding-right: 2rem;
 }
 
 .article-body-container{
@@ -27,26 +27,35 @@ padding-right: 2rem;
     font-size: calc(var(--font-size-base) * 0.95);
 }
 
-
-.article-image-container {
-    padding: var(--space-12);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-bottom: 20px;
-}
-
 .image_in_article {
-    display: block; /* Treat the image as a block */
-    margin-left: auto; /* Center it horizontally */
-    margin-right: auto; /* Center it horizontally */
-    margin-top: 20px; /* Add some space above */
-    margin-bottom: 25px; /* Add some space below */
-    max-width: 500px; /* Adjust size as needed */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    max-width: 500px;
     width: 100%; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-lg); 
+}
+
+
+.article-body-container h3 {
+    margin-top: 40px;  
+    margin-bottom: 15px; 
+    font-size: 1.5rem;   
+}
+
+.article-body-container p {
+    margin-bottom: 20px; 
+    line-height: 1.7;  
+}
+
+.article-body-container ul {
+    margin-bottom: 20px; 
+    padding-left: 25px;  
+}
+
+.article-body-container li {
+    margin-bottom: 10px; 
 }
