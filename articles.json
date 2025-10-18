@@ -5,7 +5,8 @@
     "thumbnail": "images/tactility.webp",
     "author": "Electromos Team",
     "date": "2025-10-12",
-    "description": "Meet Tactility: The App-Based Operating System for Your ESP32",
+    "description": "Ditch monolithic firmware and bring a smartphone-like experience to your ESP32 projects. Tactility is a modern, open-source OS that runs apps dynamically from an SD card, making your creations modular, stable, and easy to update.",
     "content": "tactility.html"
   }
 ]
+
