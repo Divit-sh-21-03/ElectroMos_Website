@@ -40,9 +40,10 @@ padding-right: 2rem;
 }
 
 .image_in_article{
-    margin: 5%;
-    max-width: 400px;
-    width: 90%;
+    float: right;
+    margin: 10px 0px 15px 20px; /* Adds space around the image */
+    max-width: 350px; /* Controls the maximum width of the image */
+    width: 45%; /* Makes the image responsive to the container width */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-lg); 
 }
