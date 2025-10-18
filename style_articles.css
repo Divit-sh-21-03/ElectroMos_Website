@@ -39,11 +39,14 @@ padding-right: 2rem;
     padding-bottom: 20px;
 }
 
-.image_in_article{
-    float: right;
-    margin: 10px 0px 15px 20px; /* Adds space around the image */
-    max-width: 350px; /* Controls the maximum width of the image */
-    width: 45%; /* Makes the image responsive to the container width */
+.image_in_article {
+    display: block; /* Treat the image as a block */
+    margin-left: auto; /* Center it horizontally */
+    margin-right: auto; /* Center it horizontally */
+    margin-top: 20px; /* Add some space above */
+    margin-bottom: 25px; /* Add some space below */
+    max-width: 500px; /* Adjust size as needed */
+    width: 100%; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-lg); 
 }
