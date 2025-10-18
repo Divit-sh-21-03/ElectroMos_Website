@@ -1556,11 +1556,13 @@ section {
 
 /* Articles Section */
 
-.articles-carousel{
+.articles-carousel {
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-lg);
-    width : 100%;
+    width: 100%;
+    max-width: 320px; /* <-- Add this line */
+    margin: 0 auto;   /* <-- And this line to center it */
 }
 
 .articles-grid{
@@ -2228,4 +2230,5 @@ margin-top: 5px;  /* reduced from default */
   margin-bottom: 10px;
   text-align: center;
 }
+
 
