@@ -1574,14 +1574,12 @@ section {
 }
 
 .article-card{
-   min-width: 320px; /* Fixed width for consistent layout */
-    max-width: 100%;
-    
+  min-width: 320px; /* Fixed width for consistent layout */
     background: rgba(23, 22, 22, 0.127);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-lg);
-    padding: var(--space-24);
+    padding: var(--space-12);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -1589,13 +1587,13 @@ section {
 }
 
 .article-image{
-    width: 100%;
-    height: 200px;
-    max-width: 400px;
+   width: 100%;
+    max-width: 200px;
     object-fit: cover;
+    display: block;
+    margin: 0 auto;
     border-radius: var(--radius-base);
     margin-bottom: var(--space-16);
-
 }
 
 .article-card:hover{
@@ -2230,5 +2228,6 @@ margin-top: 5px;  /* reduced from default */
   margin-bottom: 10px;
   text-align: center;
 }
+
 
 
