@@ -3,7 +3,7 @@ const eventsData = [
 	   {
         id: "9",
         title: "The Mystery Box Challenge (Meraz 6.0)",
-        date: "2025-11-15",
+        date: "to be announced",
         description: "Create something innovative from a random mix of sensors, microcontrollers, and conectors before times run out...",
         image: "images/mystery_box.jpg",
         category: "meraz event",
@@ -12,39 +12,12 @@ const eventsData = [
     {
         id: "8",
         title: "The FPGA Design Contest (Meraz 6.0)",
-        date: "2025-11-12",
+        date: "to be announced",
         description: "A two-round battle of pure ruthless digital design (12th and 16th Nov, 2025) - a contest to be held during Meraz 6.0.",
         image: "images/FPGA_contest.jpg",
         category: "meraz event",
         status:"upcoming",
-    },
-	        {
-        id: 7,
-        title: "Digital Design Fundamentals by ElectroMos Club",
-        date: "2025-10-16",
-        description: "A 2-day interactive and example-driven session meant to strengthen the key topics that are essential for the upcoming VLSI Workshop.", 
-        image: "images/digital_design_session.png",
-        category: "session",
-        status: "past",
-    },
-    {
-        id: 6,
-        title: "VLSI Workshop: From Digital Electronics to GDS Flow",
-        date: "2025-10-25",  
-        description: "A 2-day hands-on workshop covering fundamentals of digital electronics all the way to the VLSI GDS flow, with alumni interaction sessions.",
-        image: "images/vlsiWorkshop.png", 
-        category: "workshop",
-        status: "past",
-    },
-    {
-        id: 5,
-        title: "Intra IIT – IoT Practice Challenge",
-        date: "2025-08-21",  
-        description: "A practice challenge for the upcoming Inter-IIT Tech Meet, focusing on IoT problem statements.",
-        image: "images/Intraiit.png", 
-        category: "hackathon",
-        status: "past",
-    },
+    }
 ];
 
 const projectsData = [
@@ -333,11 +306,14 @@ function renderEvents() {
             eventCard.classList.add('past-event');
         }
         
+        if (event.date == "to be announced"){
+            eventDate = "Announcing Soon...";
+        } else {
         const eventDate = new Date(event.date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
-        });
+        });}
         
         eventCard.innerHTML = `
             <div class="event-category">${event.category}</div>
