@@ -18,33 +18,6 @@ const eventsData = [
         category: "meraz event",
         status:"upcoming",
     },
-        {
-        id: 7,
-        title: "Digital Design Fundamentals by ElectroMos Club",
-        date: "2025-10-16",
-        description: "A 2-day interactive and example-driven session meant to strengthen the key topics that are essential for the upcoming VLSI Workshop.", 
-        image: "images/digital_design_session.png",
-        category: "session",
-        status: "past",
-    },
-    {
-        id: 6,
-        title: "VLSI Workshop: From Digital Electronics to GDS Flow",
-        date: "2025-10-25",  
-        description: "A 2-day hands-on workshop covering fundamentals of digital electronics all the way to the VLSI GDS flow, with alumni interaction sessions.",
-        image: "images/vlsiWorkshop.png", 
-        category: "workshop",
-        status: "past",
-    },
-    {
-        id: 5,
-        title: "Intra IIT – IoT Practice Challenge",
-        date: "2025-08-21",  
-        description: "A practice challenge for the upcoming Inter-IIT Tech Meet, focusing on IoT problem statements.",
-        image: "images/Intraiit.png", 
-        category: "hackathon",
-        status: "past",
-    },
 ];
 
 const projectsData = [
@@ -1048,4 +1021,5 @@ window.addEventListener('beforeunload', () => {
     if (signalAnimationId) cancelAnimationFrame(signalAnimationId);
     if (rcAnimationId) cancelAnimationFrame(rcAnimationId);
 });
+
 
