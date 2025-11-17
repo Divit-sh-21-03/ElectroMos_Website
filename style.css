@@ -1068,8 +1068,8 @@ section {
 }
 
 .event-card {
-    min-width: 320px; /* Fixed width for consistent layout */
-    max-width: 100%;
+    min-width: 300px; /* Fixed width for consistent layout */
+    max-width:  340px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1081,10 +1081,20 @@ section {
   
 }
 
+@media (min-width: 992px) {
+  .events-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .event-card{
+    min-width: 320px;
+  }
+}
+
 .past-event {
     filter : grayscale(80%);
     min-width: 320px; /* Fixed width for consistent layout */
-    max-width: 100%;
+    max-width: 400px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1117,7 +1127,7 @@ section {
 
 .event-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 320px;
     object-fit: cover;
     border-radius: var(--radius-base);
     margin-bottom: var(--space-16);
